@@ -16,7 +16,7 @@
                 </li>
             </ul>
         </div>
-        <div class="flash flash_success" v-if="flash.success">
+        <div class="flash flash__success" v-if="flash.success">
             {{ flash.success }}
         </div>
         <div class="flash flash__error" v-if="flash.error">
