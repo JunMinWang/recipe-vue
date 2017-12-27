@@ -56,3 +56,120 @@ image {
   margin-left: 25px;
 }
 
+.form {
+  background: #FFF;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.09) 0 2px 0;
+          box-shadow: rgba(0, 0, 0, 0.09) 0 2px 0;
+  width: 30%;
+  margin: 30px auto;
+  padding: 15px;
+}
+
+.form__group {
+  margin-top: 15px;
+}
+
+.form__group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form__control {
+  font-size: 14px;
+  width: 100%;
+  display: block;
+  background: #fafafa;
+  border: none;
+  border-radius: 2px;
+  -webkit-box-shadow: inset 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+          box-shadow: inset 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+  outline: none;
+  padding: 8px;
+}
+
+.form__control:focus {
+  background: rgba(255, 245, 254, 0.31);
+}
+
+.form__qty {
+  width: 45%;
+  margin: 0px 10px;
+}
+
+.form__margin {
+  margin-bottom: 10px;
+}
+
+.form__description {
+  height: 152px;
+}
+
+.btn {
+  border: none;
+  border-radius: 2px;
+  font-size: 13px;
+  height: 30px;
+  padding: 8px 16px;
+  cursor: pointer;
+  background: #f4f4f4;
+  color: #484746;
+  -webkit-box-shadow: 0 1px lightgray;
+          box-shadow: 0 1px lightgray;
+  outline: none;
+  text-decoration: none;
+  display: inline-block;
+  line-height: 1.15em;
+}
+
+.btn:active {
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+          box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+
+.btn[disabled] {
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+.btn__primary {
+  background: #3aa3e3;
+  color: #FFF;
+  -webkit-box-shadow: 0 1px #1b81bf;
+          box-shadow: 0 1px #1b81bf;
+}
+
+.btn__danger {
+  background: #e75650;
+  color: #FFF;
+  -webkit-box-shadow: 0 1px #d7251e;
+          box-shadow: 0 1px #d7251e;
+}
+
+.error__control {
+  color: #e53935;
+}
+
+.error__bg {
+  background: #ffcdd2 !important;
+}
+
+.flash {
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 15px;
+  padding: 15px;
+  border-radius: 2px;
+}
+
+.flash__success {
+  background: #a5d6a7;
+  border: 1px solid #81c784;
+  color: #1b5e20;
+}
+
+.flash__error {
+  background: #ef9a9a;
+  border: 1px solid #e57373;
+  color: #b71c1c;
+}
+
