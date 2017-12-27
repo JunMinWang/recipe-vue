@@ -59,4 +59,16 @@ class AuthController extends Controller
         ], 422);
     }
 
+    /**
+     *  使用者登出
+     */ 
+    public function logout(Request $request) {
+        $user = $request->user();
+        $user->api_token = null;
+        $user->save();
+
+        return response()->json([
+            'logged_out' => true
+        ]);
+    }
 }

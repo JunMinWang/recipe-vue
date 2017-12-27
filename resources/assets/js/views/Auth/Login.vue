@@ -29,6 +29,7 @@
 
 <script type="text/javascript">
     import Flash from '../../helpers/flash';
+    import Auth from '../../store/auth';
     import { post } from '../../helpers/api';
     export default {
         data() {
@@ -48,6 +49,7 @@
                 post('api/login', this.form)
                     .then((res) => {
                         if(res.data.authenticated) {
+                            Auth.set(res.data.api_token, res.data.user_id)
                             Flash.setSuccess('登入成功!')
                             this.$router.push('/')
                         }
