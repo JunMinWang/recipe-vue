@@ -206,7 +206,7 @@ class RecipeController extends Controller
         RecipeIngredient::where('recipe_id', $recipe->id)->delete();
         RecipeDirection::where('recipe_id', $recipe->id)->delete();
 
-        File::delete(bash_path('public/images/' . $recipe->image));
+        File::delete(base_path('public/images/' . $recipe->image));
 
         $recipe->delete();
 
