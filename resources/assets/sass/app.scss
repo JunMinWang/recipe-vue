@@ -270,5 +270,9 @@ img {
         padding: 15px;
     }
 
-    
+    &__form {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 10px;
+    }
 }

@@ -46,7 +46,7 @@ class RecipeController extends Controller
     /**
      *  編輯食譜
      */
-    public function edit(Request $request) {
+    public function edit($id, Request $request) {
         $form = $request->user()->recipes()->with([
             'ingredients' => function($query) {
                 $query->get(['id', 'name', 'qty']);

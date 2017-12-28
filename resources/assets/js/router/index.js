@@ -10,9 +10,10 @@ import RecipeForm from '../views/Recipes/Form.vue';
 Vue.use(VueRouter)
 
 const router = new VueRouter({
+    // mode: 'history',
     routes: [
         { path: '/', component: RecipeIndex },
-        { path: '/recipes/:id/edit', component: RecipeForm },
+        { path: '/recipes/:id/edit', component: RecipeForm, meta:{mode: 'edit'}},
         { path: '/recipes/:id', component: RecipeShow },
         { path: '/register', component: Register },
         { path: '/login', component: Login}

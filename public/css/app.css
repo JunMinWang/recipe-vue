@@ -315,3 +315,12 @@ img {
   padding: 15px;
 }
 
+.recipe__form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin-bottom: 10px;
+}
+

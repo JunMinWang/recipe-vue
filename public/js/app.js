@@ -1878,6 +1878,149 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0&bustCache!./resources/assets/js/views/Recipes/Form.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__("./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__helpers_flash__ = __webpack_require__("./resources/assets/js/helpers/flash.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__helpers_api__ = __webpack_require__("./resources/assets/js/helpers/api.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            form: {
+                ingredients: [],
+                directions: []
+            },
+            error: {},
+            isProccessing: false,
+            initializeURL: 'api/recipes/create',
+            storeURL: 'api/recipes',
+            action: 'Create'
+        };
+    },
+    created: function created() {
+        var _this = this;
+
+        if (this.$route.meta.mode === 'edit') {
+            this.initializeURL = 'api/recipes/' + this.$route.params.id + '/edit';
+            this.storeURL = 'api/recipes/' + this.$route.params.id + '?_method=PUT';
+            this.action = 'Update';
+        }
+
+        Object(__WEBPACK_IMPORTED_MODULE_2__helpers_api__["b" /* get */])(this.initializeURL).then(function (res) {
+            // ??
+            __WEBPACK_IMPORTED_MODULE_0_vue___default.a.set(_this.$data, 'form', res.data.form);
+        });
+    },
+
+
+    methods: {
+        save: function save() {},
+        addDirection: function addDirection() {
+            this.form.directions.push({ description: '' });
+        },
+        addIngredient: function addIngredient() {
+            this.form.ingredients.push({
+                name: '',
+                qty: ''
+            });
+        },
+        remove: function remove(type, index) {
+            if (this.form[type].length > 1) {
+                this.form[type].splice(index, 1);
+            }
+        }
+    }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0&bustCache!./resources/assets/js/views/Recipes/Index.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1923,6 +2066,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helpers_flash__ = __webpack_require__("./resources/assets/js/helpers/flash.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__store_auth__ = __webpack_require__("./resources/assets/js/store/auth.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__helpers_api__ = __webpack_require__("./resources/assets/js/helpers/api.js");
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3028,6 +3179,295 @@ if (false) {
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-8c428f3e\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0&bustCache!./resources/assets/js/views/Recipes/Form.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "recipe__show" }, [
+    _c("div", { staticClass: "recipe__header" }, [
+      _c("h3", [_vm._v(_vm._s(_vm.action) + " Recipe")]),
+      _vm._v(" "),
+      _c("div", [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn__primary",
+            attrs: { disabled: _vm.isProccessing },
+            on: { click: _vm.save }
+          },
+          [_vm._v("\n                存檔\n            ")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn",
+            attrs: { disabled: _vm.isProccessing },
+            on: {
+              click: function($event) {
+                _vm.$router.back()
+              }
+            }
+          },
+          [_vm._v("\n                取消\n            ")]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "recipe__row" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "recipe__details" }, [
+        _c("div", { staticClass: "recipe__details_inner" }, [
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", [_vm._v("姓名")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.name,
+                  expression: "form.name"
+                }
+              ],
+              staticClass: "form__control",
+              attrs: { type: "text" },
+              domProps: { value: _vm.form.name },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "name", $event.target.value)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _vm.error.name
+              ? _c("small", { staticClass: "error_control" }, [
+                  _vm._v(
+                    "\n                            " +
+                      _vm._s(_vm.error.name[0]) +
+                      "\n                        "
+                  )
+                ])
+              : _vm._e()
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", [_vm._v("描述")]),
+            _vm._v(" "),
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.description,
+                  expression: "form.description"
+                }
+              ],
+              staticClass: "form__control",
+              domProps: { value: _vm.form.description },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "description", $event.target.value)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _vm.error.description
+              ? _c("small", { staticClass: "error_control" }, [
+                  _vm._v(
+                    "\n                            " +
+                      _vm._s(_vm.error.description[0]) +
+                      "\n                        "
+                  )
+                ])
+              : _vm._e()
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "recipe__row" }, [
+      _c("div", { staticClass: "recipe__ingredients" }, [
+        _c(
+          "div",
+          { staticClass: "recipe__box" },
+          [
+            _c("h3", { staticClass: "recipe__sub_title" }, [_vm._v("食材")]),
+            _vm._v(" "),
+            _vm._l(_vm.form.ingredients, function(ingredient, index) {
+              return _c("div", { staticClass: "recipe__form" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: ingredient.name,
+                      expression: "ingredient.name"
+                    }
+                  ],
+                  staticClass: "form__control",
+                  class: [
+                    _vm.error["ingredients." + index + ".name"]
+                      ? "error__bg"
+                      : ""
+                  ],
+                  attrs: { type: "text" },
+                  domProps: { value: ingredient.name },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(ingredient, "name", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: ingredient.qty,
+                      expression: "ingredient.qty"
+                    }
+                  ],
+                  staticClass: "form__control form_qty",
+                  class: [
+                    _vm.error["ingredients." + index + ".qty"]
+                      ? "error__bg"
+                      : ""
+                  ],
+                  attrs: { type: "text" },
+                  domProps: { value: ingredient.qty },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(ingredient, "qty", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn__danger",
+                    on: {
+                      click: function($event) {
+                        _vm.remove("ingredients", index)
+                      }
+                    }
+                  },
+                  [_vm._v(" × ")]
+                )
+              ])
+            }),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "btn", on: { click: _vm.addIngredient } },
+              [_vm._v("新增食材")]
+            )
+          ],
+          2
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "recipe__directions" }, [
+        _c(
+          "div",
+          { staticClass: "recipe__directions_inner" },
+          [
+            _c("h3", { staticClass: "recipe__sub_title" }, [_vm._v("作法")]),
+            _vm._v(" "),
+            _vm._l(_vm.form.directions, function(direction, index) {
+              return _c("div", { staticClass: "recipe__form" }, [
+                _c("textarea", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: direction.description,
+                      expression: "direction.description"
+                    }
+                  ],
+                  staticClass: "form__control",
+                  class: [
+                    _vm.error["direction." + index + ".description"]
+                      ? "error__bg"
+                      : ""
+                  ],
+                  domProps: { value: direction.description },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(direction, "description", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn__danger",
+                    on: {
+                      click: function($event) {
+                        _vm.remove("directions", index)
+                      }
+                    }
+                  },
+                  [_vm._v(" × ")]
+                )
+              ])
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "btn", on: { click: _vm.addDirection } }, [
+              _vm._v("新增作法")
+            ])
+          ],
+          2
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "recipe__image" }, [
+      _c("div", { staticClass: "recipe__box" }, [
+        _vm._v("\n                上傳圖片\n            ")
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-8c428f3e", module.exports)
+  }
+}
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-ed1e7bcc\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0&bustCache!./resources/assets/js/views/Recipes/Show.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3065,7 +3505,7 @@ var render = function() {
                     "router-link",
                     {
                       staticClass: "btn btn__primary",
-                      attrs: { to: "recipes/" + _vm.recipe.id + "/edit" }
+                      attrs: { to: "/recipes/" + _vm.recipe.id + "/edit" }
                     },
                     [
                       _vm._v(
@@ -3111,7 +3551,7 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "recipe__directions" }, [
         _c("div", { staticClass: "recipe__directions_inner" }, [
-          _c("h3", { staticClass: "recipe__sub_title" }, [_vm._v("評論")]),
+          _c("h3", { staticClass: "recipe__sub_title" }, [_vm._v("作法")]),
           _vm._v(" "),
           _c(
             "ul",
@@ -16808,7 +17248,8 @@ function del(url) {
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]);
 
 var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
-    routes: [{ path: '/', component: __WEBPACK_IMPORTED_MODULE_4__views_Recipes_Index_vue___default.a }, { path: '/recipes/:id/edit', component: __WEBPACK_IMPORTED_MODULE_6__views_Recipes_Form_vue___default.a }, { path: '/recipes/:id', component: __WEBPACK_IMPORTED_MODULE_5__views_Recipes_Show_vue___default.a }, { path: '/register', component: __WEBPACK_IMPORTED_MODULE_2__views_Auth_Register_vue___default.a }, { path: '/login', component: __WEBPACK_IMPORTED_MODULE_3__views_Auth_Login_vue___default.a }]
+    // mode: 'history',
+    routes: [{ path: '/', component: __WEBPACK_IMPORTED_MODULE_4__views_Recipes_Index_vue___default.a }, { path: '/recipes/:id/edit', component: __WEBPACK_IMPORTED_MODULE_6__views_Recipes_Form_vue___default.a, meta: { mode: 'edit' } }, { path: '/recipes/:id', component: __WEBPACK_IMPORTED_MODULE_5__views_Recipes_Show_vue___default.a }, { path: '/register', component: __WEBPACK_IMPORTED_MODULE_2__views_Auth_Register_vue___default.a }, { path: '/login', component: __WEBPACK_IMPORTED_MODULE_3__views_Auth_Login_vue___default.a }]
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (router);
@@ -16943,11 +17384,12 @@ module.exports = Component.exports
 /***/ "./resources/assets/js/views/Recipes/Form.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
+var disposed = false
 var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
 /* script */
-var __vue_script__ = null
+var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0&bustCache!./resources/assets/js/views/Recipes/Form.vue")
 /* template */
-var __vue_template__ = null
+var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-8c428f3e\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0&bustCache!./resources/assets/js/views/Recipes/Form.vue")
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -16965,6 +17407,22 @@ var Component = normalizeComponent(
   __vue_module_identifier__
 )
 Component.options.__file = "resources/assets/js/views/Recipes/Form.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-8c428f3e", Component.options)
+  } else {
+    hotAPI.reload("data-v-8c428f3e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
 
 module.exports = Component.exports
 
