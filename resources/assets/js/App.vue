@@ -6,10 +6,13 @@
             </div>
             <ul class="navbar__list">
                 <li class="navbar__item" v-if="!check">
-                    <router-link to="/login">Login</router-link>
+                    <router-link to="/login">登入</router-link>
                 </li>
                 <li class="navbar__item" v-if="!check">
-                    <router-link to="/register">Register</router-link>
+                    <router-link to="/register">註冊</router-link>
+                </li>
+                <li class="navbar__item" v-if="check">
+                    <router-link to="/recipes/create">新增食譜</router-link>
                 </li>
                 <li class="navbar__item" v-if="check">
                     <a @click.stop="logout">登出</a>

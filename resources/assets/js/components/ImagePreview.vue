@@ -1,7 +1,7 @@
 <template>
     <div class="image__preview" v-if="image">
         <img :src="image">
-        <button class="btn btn__danger image__close" @click="$emit('close')">
+        <button class="btn btn__danger image__close" @click="close">
             &times;
         </button>
     </div>

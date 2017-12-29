@@ -40,7 +40,7 @@ class RecipeController extends Controller
     public function create() {
         $form = Recipe::form();
 
-        return resopnse()->json(['form' => $form]);
+        return response()->json(['form' => $form]);
     }
 
     /**

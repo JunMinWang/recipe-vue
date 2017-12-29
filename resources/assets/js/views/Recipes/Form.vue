@@ -27,7 +27,7 @@
                         <div class="form-group">
                             <label>姓名</label>
                             <input type="text" class="form__control" v-model="form.name">
-                            <small class="error_control" v-if="error.name">
+                            <small class="error__control" v-if="error.name">
                                 {{ error.name[0] }}
                             </small>
                         </div>
@@ -37,7 +37,7 @@
                         <div class="form-group">
                             <label>描述</label>
                             <textarea class="form__control" v-model="form.description"></textarea>
-                            <small class="error_control" v-if="error.description">
+                            <small class="error__control" v-if="error.description">
                                 {{ error.description[0] }}
                             </small>
                         </div>
@@ -67,7 +67,7 @@
                 <div class="recipe__directions_inner">
                     <h3 class="recipe__sub_title">作法</h3>
                     <div v-for="(direction, index) in form.directions" class="recipe__form">
-                        <textarea class="form__control" v-model="direction.description" :class="[error[`direction.${index}.description`] ? 'error__bg' : '']"></textarea>
+                        <textarea class="form__control" v-model="direction.description" :class="[error[`directions.${index}.description`] ? 'error__bg' : '']"></textarea>
                         <button class="btn btn__danger" @click="remove('directions', index)"> &times; </button>
                     </div>
 
@@ -130,7 +130,7 @@
                     })
                     .catch((err) => {
                         if(err.response.status === 422) {
-                            this.error = err.response.data
+                            this.error = err.response.data.errors
                         }
                         this.isProcessing = false;
                     })
