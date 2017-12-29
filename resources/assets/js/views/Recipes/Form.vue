@@ -83,6 +83,7 @@
     import Vue from 'vue'
     import Flash from '../../helpers/flash'
     import { get, post } from '../../helpers/api'
+    import { toMulipartedForm } from '../../helpers/form'
     import ImageUpload from '../../components/ImageUpload.vue'
 
     export default {
@@ -118,7 +119,21 @@
 
         methods: {
             save() {
-
+                this.isProcessing = true
+                const form = toMulipartedForm(this.form, this.$route.meta.mode)
+                post(this.storeURL, form)
+                    .then((res) => {
+                        if(res.data.saved) {
+                            Flash.setSuccess(res.data.message)
+                            this.$router.push(`/recipes/${res.data.id}`)
+                        }
+                    })
+                    .catch((err) => {
+                        if(err.response.status === 422) {
+                            this.error = err.response.data
+                        }
+                        this.isProcessing = false;
+                    })
             },
             addDirection() {
                 this.form.directions.push({description: ''})

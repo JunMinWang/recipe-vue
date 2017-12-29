@@ -69,9 +69,9 @@ class RecipeController extends Controller
         $this->validate($request, [
             'name' => 'required|max:255',
             'description' => 'required|max:3000',
-            'image' => 'required|image',
+            'image' => 'image',
             'ingredients' => 'required|array|min:1',
-            'ingredients.*.id' => 'required|exists:recipe_ingredients',
+            'ingredients.*.id' => 'integer|exists:recipe_ingredients',
             'ingredients.*.name' => 'required|max:255',
             'ingredients.*.qty' => 'required|max:255',
             'directions' => 'required|array|min:1',
@@ -117,7 +117,7 @@ class RecipeController extends Controller
         $recipe->description = $request->description;
         
         if($request->hasFile('image') && $request->file('image')->isValid()) {
-            $filename = $this->getFileNmae($request->image);
+            $filename = $this->getFileName($request->image);
             $request->image->move(base_path('public/images/'), $filename);
 
             // 刪除舊相片
