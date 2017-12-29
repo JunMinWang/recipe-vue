@@ -276,3 +276,25 @@ img {
         margin-bottom: 10px;
     }
 }
+
+.image {
+    
+    &__upload {
+        height: 257px;
+        background: #fafafa;
+        border: 1p dashed rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__preview {
+        position: relative;
+    }
+
+    &__close{
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+}

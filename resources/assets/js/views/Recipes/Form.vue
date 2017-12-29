@@ -3,10 +3,10 @@
         <div class="recipe__header">
             <h3>{{ action }} Recipe</h3>
             <div>
-                <button class="btn btn__primary" @click="save" :disabled="isProccessing">
+                <button class="btn btn__primary" @click="save" :disabled="isProcessing">
                     存檔
                 </button>
-                <button class="btn" @click="$router.back()" :disabled="isProccessing">
+                <button class="btn" @click="$router.back()" :disabled="isProcessing">
                     取消
                 </button>
             </div>
@@ -15,7 +15,10 @@
         <div class="recipe__row">
             <div class="recipe__image">
                 <div class="recipe__box">
-                    上傳圖片
+                    <image-upload v-model="form.image"></image-upload>
+                    <small class="error__control" v-if="error.image">
+                        {{ error.image[0] }}
+                    </small>
                 </div>
             </div>
             <div class="recipe__details">
@@ -80,8 +83,12 @@
     import Vue from 'vue'
     import Flash from '../../helpers/flash'
     import { get, post } from '../../helpers/api'
+    import ImageUpload from '../../components/ImageUpload.vue'
 
     export default {
+        components: {
+            ImageUpload
+        },
         data() {
             return {
                 form: {
@@ -89,7 +96,7 @@
                     directions: []
                 },
                 error: {},
-                isProccessing: false,
+                isProcessing: false,
                 initializeURL: `api/recipes/create`,
                 storeURL: `api/recipes`,
                 action: 'Create'
@@ -129,5 +136,4 @@
             }
         }
     }
-
 </script>
