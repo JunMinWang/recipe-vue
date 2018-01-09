@@ -5,7 +5,6 @@ export default {
     },
 
     initialize() {
-        // localStorage?
         this.state.api_token = localStorage.getItem('api_token')
         this.state.user_id = parseInt(localStorage.getItem('user_id'))
     },

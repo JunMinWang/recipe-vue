@@ -8,21 +8,25 @@ export function toMulipartedForm(form, mode) {
     }
 }
 
+//
 export function objectToFormData(obj, form, namespace) {
     let fd = form || new FormData()
     let formKey
     for(var property in obj) {
         if(obj.hasOwnProperty(property)) {
+        
             if(namespace) {
                 formKey = namespace + '[' + property + ']'
             } else {
                 formKey = property
             }
-
+        
+            // 如果form中的property為陣列 則拆分
             if(obj[property] instanceof Array) {
                 for(var i=0 ; i<obj[property].length ; i++) {
                     objectToFormData(obj[property][i], fd, `${property}[${i}]`)
                 }
+            // 如果form中的property為陣列 則拆分
             } else if(typeof obj[property] === 'object' && !(obj[property] instanceof File)) {
                 objectToFormData(obj[property], fd, property)
             } else {
@@ -30,6 +34,5 @@ export function objectToFormData(obj, form, namespace) {
             }
         }
     }
-
     return fd
 }

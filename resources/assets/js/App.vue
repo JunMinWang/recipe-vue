@@ -1,31 +1,45 @@
 <template>
     <div class="container">
         <div class="navbar">
-            <div class="navbar__brand">
-                <router-link to="/">Recipe</router-link>
+            <!-- 左上角 -->
+                <div class="navbar__brand">
+                    <router-link to="/">Recipe</router-link>
+                </div>
+            <!-- 左上角 結束 -->
+
+            <!-- 右上角 -->
+                <ul class="navbar__list">
+                    <li class="navbar__item" v-if="!check">
+                        <router-link to="/login">登入</router-link>
+                    </li>
+                    <li class="navbar__item" v-if="!check">
+                        <router-link to="/register">註冊</router-link>
+                    </li>
+                    <li class="navbar__item" v-if="check">
+                        <router-link to="/recipes/create">新增食譜</router-link>
+                    </li>
+                    <li class="navbar__item" v-if="check">
+                        <a @click.stop="logout">登出</a>
+                    </li>
+                </ul>
+            <!-- 右上角 結束 -->
+        </div>
+
+        <!-- 成功訊息框 -->
+            <div class="flash flash__success" v-if="flash.success">
+                {{ flash.success }}
             </div>
-            <ul class="navbar__list">
-                <li class="navbar__item" v-if="!check">
-                    <router-link to="/login">登入</router-link>
-                </li>
-                <li class="navbar__item" v-if="!check">
-                    <router-link to="/register">註冊</router-link>
-                </li>
-                <li class="navbar__item" v-if="check">
-                    <router-link to="/recipes/create">新增食譜</router-link>
-                </li>
-                <li class="navbar__item" v-if="check">
-                    <a @click.stop="logout">登出</a>
-                </li>
-            </ul>
-        </div>
-        <div class="flash flash__success" v-if="flash.success">
-            {{ flash.success }}
-        </div>
-        <div class="flash flash__error" v-if="flash.error">
-            {{ flash.error }}
-        </div>
-        <router-view></router-view>
+        <!-- 成功訊息框 結束 -->
+
+        <!-- 失敗訊息框 -->
+            <div class="flash flash__error" v-if="flash.error">
+                {{ flash.error }}
+            </div>
+        <!-- 失敗訊息框 結束 -->
+
+        <!-- 路由 -->
+            <router-view></router-view>
+        <!-- 路由 結束 -->
     </div>
 </template>
 

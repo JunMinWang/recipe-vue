@@ -20,6 +20,7 @@ class Recipe extends Model
         return $this->hasMany(RecipeDirection::class);
     }
 
+    // 用於輸出新增食譜時的API 代表Recipe表的欄位
     public static function form() {
         return [
             'name' => '',

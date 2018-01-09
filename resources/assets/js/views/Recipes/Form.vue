@@ -48,32 +48,32 @@
 
         <div class="recipe__row">
             <!-- 食材區塊 -->
-            <div class="recipe__ingredients">
-                <div class="recipe__box">
-                    <h3 class="recipe__sub_title">食材</h3>
-                    <div v-for="(ingredient, index) in form.ingredients" class="recipe__form">
-                        <input type="text" class="form__control" v-model="ingredient.name" :class="[error[`ingredients.${index}.name`] ? 'error__bg' : '']">
-                        <input type="text" class="form__control form_qty" v-model="ingredient.qty" :class="[error[`ingredients.${index}.qty`] ? 'error__bg' : '']">
-                        <button class="btn btn__danger" @click="remove('ingredients', index)"> &times; </button>
-                    </div>
+                <div class="recipe__ingredients">
+                    <div class="recipe__box">
+                        <h3 class="recipe__sub_title">食材</h3>
+                        <div v-for="(ingredient, index) in form.ingredients" class="recipe__form">
+                            <input type="text" class="form__control" v-model="ingredient.name" :class="[error[`ingredients.${index}.name`] ? 'error__bg' : '']">
+                            <input type="text" class="form__control form_qty" v-model="ingredient.qty" :class="[error[`ingredients.${index}.qty`] ? 'error__bg' : '']">
+                            <button class="btn btn__danger" @click="remove('ingredients', index)"> &times; </button>
+                        </div>
 
-                    <div class="btn" @click="addIngredient">新增食材</div>
+                        <div class="btn" @click="addIngredient">新增食材</div>
+                    </div>
                 </div>
-            </div>
             <!-- 食材區塊 end -->
 
             <!-- 作法區塊 -->
-            <div class="recipe__directions">
-                <div class="recipe__directions_inner">
-                    <h3 class="recipe__sub_title">作法</h3>
-                    <div v-for="(direction, index) in form.directions" class="recipe__form">
-                        <textarea class="form__control" v-model="direction.description" :class="[error[`directions.${index}.description`] ? 'error__bg' : '']"></textarea>
-                        <button class="btn btn__danger" @click="remove('directions', index)"> &times; </button>
-                    </div>
+                <div class="recipe__directions">
+                    <div class="recipe__directions_inner">
+                        <h3 class="recipe__sub_title">作法</h3>
+                        <div v-for="(direction, index) in form.directions" class="recipe__form">
+                            <textarea class="form__control" v-model="direction.description" :class="[error[`directions.${index}.description`] ? 'error__bg' : '']"></textarea>
+                            <button class="btn btn__danger" @click="remove('directions', index)"> &times; </button>
+                        </div>
 
-                    <div class="btn" @click="addDirection">新增作法</div>
+                        <div class="btn" @click="addDirection">新增作法</div>
+                    </div>
                 </div>
-            </div>
             <!-- 作法區塊 end -->
         </div>
     </div>
@@ -112,7 +112,8 @@
 
             get(this.initializeURL)
                 .then((res) => {
-                    // ??
+                    // (varName, key, value)
+                    // 等同於this.$set()，用來指定Vue實例data中物件的值
                     Vue.set(this.$data, 'form', res.data.form)
                 })
         },
@@ -121,6 +122,7 @@
             save() {
                 this.isProcessing = true
                 const form = toMulipartedForm(this.form, this.$route.meta.mode)
+
                 post(this.storeURL, form)
                     .then((res) => {
                         if(res.data.saved) {
@@ -147,6 +149,7 @@
             remove(type, index) {
                 if(this.form[type].length > 1) {
                     this.form[type].splice(index, 1)
+                    // splice方法是用來新增或移除陣列元素，(增加/移除項目的位置, 刪除的項目數量, 向陣列新增的項目)
                 }
             }
         }

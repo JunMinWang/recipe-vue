@@ -10,6 +10,7 @@ class RecipeDirection extends Model
 
     public $timestamps = false;
 
+    // 用於輸出新增食譜時的API 代表description表的欄位
     public static function form() {
         return [
             'description' => ''

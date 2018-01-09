@@ -27,17 +27,15 @@
             'preview': 'setPreview'
         },
         methods: {
-            setPreview() {
+            setPreview() {        
                 if(this.preview instanceof File) {
                     const fileReader = new FileReader()
-                    fileReader.onload = (event) => {
+                    fileReader.onload = (event) => {                
                         this.image = event.target.result
                     }
-                    fileReader.readAsDataURL(this.preview)
-
-                } else if(typeof this.preview === 'string') {
+                    fileReader.readAsDataURL(this.preview)  
+                } else if(typeof this.preview === 'string') {            
                     this.image = `images/${this.preview}`
-
                 } else {
                     this.image = null
                 }

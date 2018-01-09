@@ -47,6 +47,7 @@ class RecipeController extends Controller
      *  編輯食譜
      */
     public function edit($id, Request $request) {
+        // user表關聯recipe表 再去分別關聯ingredients及directions表
         $form = $request->user()->recipes()->with([
             'ingredients' => function($query) {
                 $query->get(['id', 'name', 'qty']);
@@ -215,6 +216,9 @@ class RecipeController extends Controller
         ]);
     }
 
+    /**
+     *  取得隨機亂碼檔名
+     */
     protected function getFileName($file) {
         return str_random(32) . '.' . $file->extension();
     }

@@ -1,5 +1,7 @@
 /node_modules
-/public
+/public/js
+/public/css
+/public/image
 /storage/*.key
 /vendor
 /.idea

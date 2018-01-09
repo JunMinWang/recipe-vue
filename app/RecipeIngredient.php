@@ -12,6 +12,7 @@ class RecipeIngredient extends Model
 
     public $timestamps = false;
 
+    // 用於輸出新增食譜時的API 代表Ingredient表的欄位
     public static function form() {
         return [
             'name' => '',
