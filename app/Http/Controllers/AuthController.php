@@ -30,6 +30,42 @@ class AuthController extends Controller
             'registered' => true
         ]);
     }
+
+    /**
+     *  驗證臉書使用者
+     */ 
+    public function validateSocialite($service, Request $request) {
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'email' => 'required|email',
+            'api_token' => 'required|alpha_num'
+        ]);
+
+        $uCheck = User::where('email', $request->email)->first();
+
+        if($uCheck) {
+            $uCheck->api_token = $request->api_token;
+            $uCheck->save();
+
+            return response()->json([
+                'status' => 'validated',
+                'user_id' => $uCheck->id,
+                'api_token' => $uCheck->api_token
+            ]);
+        } else {
+            $user = new User($request->all());
+            $user->password = bcrypt(str_random(20));
+            $user->save();
+
+            return response()->json([
+                'status' => 'validated',
+                'user_id' => $user->id,
+                'api_token' => $user->api_token
+            ]);
+        }
+    
+        
+    }
     
     /**
      *  使用者登入
